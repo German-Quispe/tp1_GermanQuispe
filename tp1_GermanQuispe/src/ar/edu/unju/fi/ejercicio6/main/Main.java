@@ -19,10 +19,10 @@ public class Main {
 		
 		
 		System.out.println("Ingrese DNI: ");
-		String dni = sc.next();
+		String dni = sc.nextLine(); 
 		System.out.println("Ingrese Nombre: ");
-		String nombre = sc.next();
-		System.out.println("ingrese fecha de naciomiento: (yyyy-mm-dd)");
+		String nombre = sc.nextLine();
+		System.out.println("Ingrese fecha de naciomiento(yyyy-mm-dd): ");
 		String fechaEnString =sc.next();
 		
 		DateTimeFormatter format = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toFormatter(); 
@@ -46,10 +46,10 @@ public class Main {
 		
 		
 		System.out.println("Ingrese DNI: ");
-		String dni2 = sc.next();
+		String dni2 = sc.nextLine();
 		System.out.println("Ingrese Nombre: ");
-		String nombre2 = sc.next();
-		System.out.println("ingrese fecha de naciomiento: (yyyy-mm-dd)");
+		String nombre2 = sc.nextLine();
+		System.out.println("Ingrese fecha de naciomiento(yyyy-mm-dd): ");
 		String fechaEnString2 =sc.next();
 		
 		DateTimeFormatter format2 = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toFormatter(); 
@@ -70,10 +70,10 @@ public class Main {
 	
 		
 		System.out.println("Ingrese DNI: ");
-		String dni3 = sc.next();
+		String dni3 = sc.nextLine();
 		System.out.println("Ingrese Nombre: ");
-		String nombre3 = sc.next();
-		System.out.println("ingrese fecha de naciomiento: (yyyy-mm-dd)");
+		String nombre3 = sc.nextLine();
+		System.out.println("Ingrese fecha de naciomiento(yyyy-mm-dd): ");
 		String fechaEnString3 =sc.next();
 		DateTimeFormatter format3 = new DateTimeFormatterBuilder().append(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toFormatter(); 
 		LocalDate fechaNacimiento3 = LocalDate.parse(fechaEnString3, format3); 
