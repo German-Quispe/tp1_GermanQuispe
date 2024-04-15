@@ -20,6 +20,8 @@ public class Main {
 		calculadoraEspecial.calcularSumatoria(n);
 		calculadoraEspecial.calcularProductorial(n);
 		//--------------------------------------
+		
+		sc.close();
 	}
 
 }
