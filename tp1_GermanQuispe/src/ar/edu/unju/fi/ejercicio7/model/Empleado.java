@@ -7,25 +7,25 @@ public class Empleado {
 	private Float salario;
 	
 	//------------Constantes--------------
-	final int salarioMinimo = 210000; 
-	final int aumentoPorMerito = 20000;
+	private final int SALARIOMINIMO = 210000; 
+	private final int AUMENTOPORMERITO = 20000;
 	//-------------------------------------
 	
 	//-------Constructor Parametrizado------
 	public Empleado(String nombre, Integer legajo, Float salario) {
 		this.nombre = nombre;
 		this.legajo = legajo;
-		if (salario >= salarioMinimo) {
+		if (salario >= SALARIOMINIMO) {
 			this.salario = salario;
 		}else{
-			this.salario = (float) salarioMinimo;
+			this.salario = (float) SALARIOMINIMO;
 		}
 	}
 	//--------------------------------------
 	
 	//--------------Metodos-----------------
 	public float aumento(Float salario, int cant) {
-		this.salario = (float) (this.salario + (aumentoPorMerito*cant));
+		this.salario = (float) (this.salario + (AUMENTOPORMERITO*cant));
 		return this.salario;
 	}
 	
