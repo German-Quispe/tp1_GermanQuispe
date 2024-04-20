@@ -22,13 +22,17 @@ public class Main {
 		for (int i = 0; i<nombre.length;i++) {
 			System.out.println("Elemento en la posicion "+i+" = "+nombre[i]);
 		}
-		//---Recorrido del Array de la ultima posicion a la primera---
 		System.out.println("----------------------------------------------");
+		
+		//---Recorrido del Array de la ultima posicion a la primera---
 		for (int i = nombre.length-1; i>=0;i--) {
 			System.out.println("Elemento en la posicion "+i+" = "+nombre[i]);
 		}
 		//-------------------------------------------------------------
+		
 		System.out.println("----------------------------------------------");
+		
+		sc.close();
 	}
 
 }
