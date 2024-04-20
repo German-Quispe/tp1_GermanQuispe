@@ -8,14 +8,14 @@ public class Persona {
 		private Calendar fechaNacimiento;
 		
 		
-		
+		//------------Constructo Parametrizado--------------
 		public Persona(String nombre, Calendar fechaNacimiento) {
 			super();
 			this.nombre = nombre;
 			this.fechaNacimiento = fechaNacimiento;
 		}
-
-		
+		//--------------------------------------------------
+		//-------------------Mostrar Datos-------------------
 		public void mostrarDatos () {
 			
 			System.out.println("--------------------------------------");
@@ -27,18 +27,22 @@ public class Persona {
 			System.out.println("--------------------------------------");
 			
 		}
-
+		//----------------------------------------------------
+		//------------Metodo para calcular la edad------------
 		public int edad () {
-			
+			//Cracion de un objeto calendar
 			Calendar hoy = Calendar.getInstance();
 			
+			//usos de algunos metodos calendar
 			long miliSegundo = hoy.getTimeInMillis() - fechaNacimiento.getTimeInMillis();
 			int edad =  (int) (miliSegundo/1000/60/60/24/365.25);
 			return edad;
 		}
-		
+		//----------------------------------------------------
+		//------------Metodo para el Signo Zodiacal-----------
 		public String signoZodical(){
 			String signo = null;
+			//usos de algunos metodos calendar
 			int dia = fechaNacimiento.get(Calendar.DAY_OF_MONTH);
 			int mes = fechaNacimiento.get(Calendar.MONTH);
 			
@@ -129,8 +133,8 @@ public class Persona {
 			}
 			return signo;
 		}
-		
-		
+		//-----------------------------------------------------
+		//-----------Metodo para la estacion del Año-----------
 		public String estacionAnio() {
 			
 			String estacion = null;
@@ -180,7 +184,8 @@ public class Persona {
 			}
 			return estacion;
 		}
-
+		//----------------------------------------------------
+		//-----------------Getters y Setter-------------------
 		public String getNombre() {
 			return nombre;
 		}
@@ -195,5 +200,6 @@ public class Persona {
 
 		public void setFechaNacimiento(Calendar fechaNacimiento) {
 			this.fechaNacimiento = fechaNacimiento;
-		}		
+		}	
+		//----------------------------------------------------
 }

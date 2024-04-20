@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		
+		//------------Ingresos de los datos---------------
 		System.out.println("Ingrese nombre:");
 		String nombre = sc.nextLine();
 		System.out.println("Ingrese fecha de naciomiento:");
@@ -20,8 +20,10 @@ public class Main {
 		int mes = sc.nextInt();
 		System.out.println("Dia(dd): ");
 		int dia = sc.nextInt();
-
+		//------------------------------------------------
+		//Instanciamos calendar 
 		Calendar fechaNacimiento = Calendar.getInstance();
+		//ingresames una fecha especifica 
 		fechaNacimiento.set(anio, mes, dia);
 		
 		Persona persona = new Persona(nombre, fechaNacimiento);

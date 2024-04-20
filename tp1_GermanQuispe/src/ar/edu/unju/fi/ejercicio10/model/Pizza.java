@@ -6,14 +6,17 @@ public class Pizza {
 	private Double area;
 	private Boolean ingredientesEspeciales;
 	
+	//----------Constantes---------------
 	final int adicionarIngrediente20 = 500;
 	final int adicionarIngrediente30 = 750;
 	final int adicionarIngrediente40 = 1000;
-	
+	//-------------------------------------------
+	//----------Constructos por Defecto-----------
 	public Pizza() {
 		// TODO Auto-generated constructor stub
 	}
-	
+	//--------------------------------------------
+	//------------Metodo Mostrar Datos-------------
 	public void mostrarDatos() {
 		System.out.println();
 		System.out.println("-----------Pizza----------");
@@ -24,7 +27,8 @@ public class Pizza {
 		System.out.println("--------------------------");
 		System.out.println();
 	}
-	
+	//---------------------------------------------
+	//-------Metodos Calcular Area y Precio--------
 	public Double calcularArea() {
 		area =  (Math.PI*Math.pow(diametro/2, 2));
 		return area;
@@ -59,7 +63,8 @@ public class Pizza {
 			}
 		return precio;
 	}
-			
+	//----------------------------------------------
+	//-------------Getters y Setters----------------
 	public Integer getDiametro() {
 		return diametro;
 	}
@@ -84,5 +89,5 @@ public class Pizza {
 	public void setIngredientesEspeciales(Boolean ingredientesEspeciales) {
 		this.ingredientesEspeciales = ingredientesEspeciales;
 	}
-
+	//--------------------------------------------
 }
