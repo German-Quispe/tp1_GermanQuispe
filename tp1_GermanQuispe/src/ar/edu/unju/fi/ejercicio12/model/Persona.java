@@ -23,6 +23,7 @@ public class Persona {
 			System.out.println("Fecha de nacimiento: "+fechaNacimiento.get(Calendar.DAY_OF_MONTH)+"/"+fechaNacimiento.get(Calendar.MONTH)+"/"+fechaNacimiento.get(Calendar.YEAR));
 			System.out.println("Edad: "+edad()+" años");
 			System.out.println("Signo del zodiaco: "+signoZodical());
+			System.out.println("Estacion: "+estacionAnio());
 			System.out.println("--------------------------------------");
 			
 		}
