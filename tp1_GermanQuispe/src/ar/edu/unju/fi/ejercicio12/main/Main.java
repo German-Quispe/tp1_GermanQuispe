@@ -28,6 +28,7 @@ public class Main {
 		
 		persona.mostrarDatos();
 		
+		sc.close();
 	}
 
 }
