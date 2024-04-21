@@ -22,11 +22,10 @@ public class Main {
 		do {
 			menu();
 			opc = sc.nextInt();
-				
+			try {	
 				switch (opc) {
 					case 1: {
 						agregarJugador();
-						sc.nextLine();
 						break;
 					}
 					case 2:
@@ -52,11 +51,13 @@ public class Main {
 						System.out.println("Fin del programa");
 						break;
 					default:
-						System.out.println("Ingreso no valido....");
+						System.out.println("Ingrese una opcion dentro de los paremetros");
 						break;
 				}
-			
-			
+			}catch (Exception e) {
+				System.out.println("Ingreso no valido....");
+				
+			}
 		}while (opc!=8);
 		sc.close();
 
@@ -80,6 +81,7 @@ public class Main {
 	 * Metodo mostrarCantidadJugadores
 	 */
 	public static void mostrarCantidadJugadores() {
+		
 		System.out.println("El tamaño del Array es: "+jugadores.size());
 	}
 	/**
@@ -96,29 +98,9 @@ public class Main {
 				System.out.println("Se elimino a: "+j);
 			}
 		}
-	}
-	/**
-	 * Metodo cambiar Datos
-	 * Cambia todos los datos del jugador seleccionado
-	 * @param jugador
-	 */
-	public static void cambiarDatos(Jugador jugador) {
-		
-		System.out.println("---------------Modificar datos----------------");
-		System.out.print("Modifique nombre: ");
-		jugador.setNombre(sc.next());
-		System.out.print("Modifique apellido: ");
-		jugador.setApellido(sc.next());
-		System.out.print("Modofique fecha de nacimiento(yyyy-MM-dd): ");
-		jugador.setFechaDeNacimiento(LocalDate.parse(sc.next()));
-		System.out.print("Modifique nacionalidad: ");
-		jugador.setNacionalidad(sc.next());
-		System.out.print("Modifique estatura: ");
-		jugador.setEstatura(sc.nextFloat());
-		System.out.print("Modifique peso: ");
-		jugador.setPeso(sc.nextFloat());
-		System.out.print("Modifique posicion: ");
-		jugador.setPosicion(sc.next());
+		if(value==null) {
+			System.out.println("No se registro un jugador con ese nombre y apellido..");
+		}
 	}
 	
 	/**
@@ -127,26 +109,27 @@ public class Main {
 	 */
 	public static void modificarDatos() {
 		Jugador value=buscarJugador();
-		System.out.println("---------------Modificar datos----------------");
 		for(Jugador jugador:jugadores){
 			if(jugador == value) {
+				System.out.println("---------------Modificar datos----------------");
 				System.out.print("Modifique nombre: ");
 				jugador.setNombre(sc.next());
 				System.out.print("Modifique apellido: ");
 				jugador.setApellido(sc.next());
 				System.out.print("Modofique fecha de nacimiento(yyyy/MM/dd): ");
-				jugador.setFechaDeNacimiento(LocalDate.parse(sc.next()));
+				jugador.setFechaDeNacimiento(valFecha());
 				System.out.print("Modifique nacionalidad: ");
 				jugador.setNacionalidad(sc.next());
 				System.out.print("Modifique estatura: ");
-				jugador.setEstatura(sc.nextFloat());
+				jugador.setEstatura(valFloat());
 				System.out.print("Modifique peso: ");
-				jugador.setPeso(sc.nextFloat());
-				System.out.print("Modifique posicion: ");
-				jugador.setPosicion(sc.next());
-			}else {
-				System.out.println("No se registro jugador con ese nombre y apellido");
+				jugador.setPeso(valFloat());
+				System.out.print("Modifique posicion(delantero,medio,defensa o arquero): ");
+				jugador.setPosicion(valPosicion());
 			}
+		}
+		if(value==null) {
+			System.out.println("No se registro un jugador con ese nombre y apellido..");
 		}
 		System.out.println("---------------------------------------------");
 		
@@ -191,14 +174,78 @@ public class Main {
 				System.out.println("Nombre y apellido: "+jugador.getNombre()+" "+jugador.getApellido());
 				System.out.println("Edad: "+jugador.calcularEdad()+" años");
 				System.out.println("Nacionalidad: "+jugador.getNacionalidad());
-				System.out.println("Estatura: "+jugador.getEstatura());
-				System.out.println("Peso: "+jugador.getPeso());
-			}else {
-				System.out.println("No se registro jugador con ese nombre y apellido");
+				System.out.println("Estatura: "+jugador.getEstatura()+" m.");
+				System.out.println("Peso: "+jugador.getPeso()+" kg");
 			}
 		}
+		if(value==null) {
+			System.out.println("No se registro un jugador con ese nombre y apellido..");
+		}
+	}
+	/**
+	 * Metodo valPosicion
+	 * valida si la encatrada de 
+	 * posicion es correcta
+	 * @return posicion
+	 */
+	public static String valPosicion() {
+		String val = null;
+		String s = null;
+		String[] posiciones= {"delantero","medio","defensa","arquero"};
+		do {
+			s =sc.next();
+			
+			for(int i = 0; i<posiciones.length;i++) {
+				if(s.equals(posiciones[i])) {
+					val = posiciones[i];
+				}
+			}
+			if(val==null) {
+				System.out.println("No se ingreso una posicion correcta...");
+				System.out.println("Ingrese nuevamente: ");
+			}
+			
+		}while(val==null);
+		return val;
+		
 	}
 	
+	/**
+	 * metodo valFloat
+	 * Valida la entrada de datos tipo Float
+	 * @return dato de tipo float
+	 */
+	public static Float valFloat() {
+		Float s = null;
+		do{
+			try {
+				s=Float.parseFloat(sc.next());
+				
+			}catch (Exception e) {
+				System.out.println("se ingreso datos invalidos...!!");
+				System.out.println("Ingrese nuevamente: ");
+			}
+		}while(s==null);
+		return s;
+		
+	}
+	
+	/**
+	 * Valida el ingreso de la fecha nacimiento
+	 * @return devuelve la fecha asignada correctamente
+	 */
+	public static LocalDate valFecha() {
+		LocalDate s=null;
+		do {
+			try {
+				s =LocalDate.parse(sc.next());
+			}catch (Exception e) {
+				System.out.println("se ingreso datos invalidos a fecha...!!");
+				System.out.println("Ingrese nuevamente: ");
+			}
+		}while(s==null);
+		return  s;
+	}
 	/**
 	 * Metodo agregar nuevos jugadores
 	 * agrega nuevos jugadores al arrayList
@@ -208,20 +255,23 @@ public class Main {
 		System.out.println("=========================================================");
 		System.out.println("Ingrese nombre del Jugador: ");
 		String nombre = sc.next();
+		
 		System.out.println("Ingrese apellido del Jugador: ");
 		String apellido = sc.next();
 		System.out.println("Ingrese fecha de nacimiento del Jugador(yyyy-MM-dd): ");
-		LocalDate fechaNacimiento = LocalDate.parse(sc.next());
+		LocalDate fechaNacimiento =valFecha();
 		System.out.println("Ingrese nacionalidad del jugador: ");
 		String nacionalidad = sc.next();
 		System.out.println("Ingrese estatura del Jugador(m): ");
-		Float estatura = sc.nextFloat();
+		Float estatura = valFloat();
 		System.out.println("Ingrese peso del Jugador(kg): ");
-		Float peso = sc.nextFloat();
-		System.out.println("Ingrese posicion del jugador");
-		String posicion = sc.next();
+		Float peso = valFloat();
+		
+		System.out.println("Ingrese posicion del jugador(delantero,medio,defensa o arquero):");
+		String posicion = valPosicion();
 		System.out.println("=========================================================");
 		jugadores.add(new Jugador(nombre, apellido, fechaNacimiento, nacionalidad, estatura, peso, posicion));
+		//jugadores.add(new Jugador(null,apellido,null,null,null,null,posicion));
 		
 	}
 	/**
